@@ -1,0 +1,50 @@
+{
+  "name": "forgerock-crest-js",
+  "version": "1.0.0",
+  "author": "Phil Ostler <phil.ostler@forgerock.com>",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "rollup --config config/rollup/configuration.js",
+    "jsdoc": "jsdoc --configure config/jsdoc/configuration.json",
+    "test": "ava",
+    "test:coverage": "nyc yarn test"
+  },
+  "dependencies": {
+    "urijs": "1.19.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.1.5",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0",
+    "@babel/preset-env": "7.1.5",
+    "@babel/register": "7.0.0",
+    "ava": "0.25.0",
+    "babel-plugin-transform-builtin-extend": "1.1.2",
+    "docdash": "1.0.0",
+    "eslint": "5.9.0",
+    "eslint-config-forgerock": "6.0.0",
+    "eslint-plugin-filenames": "1.3.2",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-react": "7.11.1",
+    "faker": "4.1.0",
+    "fetch-mock": "7.2.5",
+    "isomorphic-fetch": "2.2.1",
+    "jsdoc": "3.5.5",
+    "jsdoc-babel": "0.5.0",
+    "nyc": "13.1.0",
+    "rollup": "0.67.1",
+    "rollup-plugin-babel": "4.0.3",
+    "rollup-plugin-commonjs": "9.2.0",
+    "rollup-plugin-eslint": "5.0.0",
+    "rollup-plugin-node-resolve": "3.4.0",
+    "rollup-plugin-uglify": "6.0.0",
+    "sinon": "7.1.1"
+  },
+  "ava": {
+    "require": [
+      "@babel/register",
+      "isomorphic-fetch"
+    ]
+  }
+}

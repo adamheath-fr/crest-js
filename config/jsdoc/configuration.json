@@ -1,0 +1,18 @@
+{
+    "babel": {
+        "babelrc": false,
+        "plugins": [
+            "@babel/plugin-proposal-object-rest-spread"
+        ]
+    },
+    "opts": {
+        "destination": "jsdoc",
+        "readme": "README.md",
+        "recurse": true,
+        "template": "node_modules/docdash"
+    },
+    "plugins": ["node_modules/jsdoc-babel"],
+    "source": {
+        "include": ["src"]
+    }
+}

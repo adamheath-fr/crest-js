@@ -1,0 +1,6 @@
+/build
+/jsdoc
+/node_modules
+
+.nyc_output
+yarn-error.log
