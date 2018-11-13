@@ -1,0 +1,25 @@
+{
+    "babel": {
+        "babelrc": false,
+        "plugins": [
+            "@babel/plugin-proposal-object-rest-spread"
+        ]
+    },
+    "docdash": {
+        "meta": {
+            "title": "ForgeRock CREST.js",
+            "description": "A Lightweight Library to Communicate With ForgeRock CREST APIs."
+        },
+        "static": true
+    },
+    "opts": {
+        "destination": "docs",
+        "readme": "README.md",
+        "recurse": true,
+        "template": "node_modules/docdash"
+    },
+    "plugins": ["node_modules/jsdoc-babel"],
+    "source": {
+        "include": ["src"]
+    }
+}
