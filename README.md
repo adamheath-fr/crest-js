@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="120" src="./documentation/logo.png">
+  <img width="120" src="logo.png">
   <h1>ForgeRock CREST.js</h1>
   A Lightweight Library to Communicate With ForgeRock CREST APIs.
 </div>
