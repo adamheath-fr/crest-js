@@ -4,8 +4,6 @@
   A Lightweight Library to Communicate With ForgeRock CREST APIs.
 </div>
 
-<!-- TOC depthFrom:2 -->
-
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -17,8 +15,6 @@
   - [Test Coverage](#test-coverage)
 - [Contributing](#contributing)
 - [Further Reading](#further-reading)
-
-<!-- /TOC -->
 
 ## Prerequisites
 
