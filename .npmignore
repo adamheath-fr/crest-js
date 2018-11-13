@@ -1,0 +1,9 @@
+/config
+/docs
+
+.eslintignore
+.eslintrc.js
+.yarnrc
+*.test.js
+logo.png
+src/.babelrc
