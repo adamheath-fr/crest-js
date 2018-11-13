@@ -5,7 +5,7 @@ import createRequest from "../createRequest";
 /**
  * Representation of a CREST v2 resource.
  * @example
- * import { CRESTv2 } from "forgerock-crest-js";
+ * import { CRESTv2 } from "@forgerock/crest-js";
  *
  * const resource = new CRESTv2("http://www.example.com");
  */

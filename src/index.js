@@ -1,10 +1,10 @@
 /**
  * Entry point for ForgeRock CREST.js.
- * @module forgerock-crest-js
+ * @module @forgerock/crest-js
  * @example <caption>Import named exports.</caption>
- * import { CRESTError, CRESTv2, ParseError, RequestError } from "forgerock-crest-js";
+ * import { CRESTError, CRESTv2, ParseError, RequestError } from "@forgerock/crest-js";
  * @example <caption>Import module.</caption>
- * import * as crest from "forgerock-crest-js";
+ * import * as crest from "@forgerock/crest-js";
  */
 
 export {

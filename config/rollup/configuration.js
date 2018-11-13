@@ -9,7 +9,7 @@ import { name, version } from "../../package.json";
 export default {
     input: "src/index.js",
     output: {
-        file: `build/forgerock-crest-js-${version}.js`,
+        file: `build/crest-js-${version}.js`,
         format: "umd",
         name,
         sourcemap: true

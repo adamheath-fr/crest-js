@@ -33,7 +33,7 @@ npm install @forgerock/crest-js
 ## Usage
 
 ```js
-import { CRESTv2 } from "forgerock-crest-js";
+import { CRESTv2 } from "@forgerock/crest-js";
 
 const resource = new CRESTv2("http://www.domain.com/crest/api");
 
