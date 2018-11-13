@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "rollup --config config/rollup/configuration.js",
-    "jsdoc": "jsdoc --configure config/jsdoc/configuration.json",
+    "docs": "jsdoc --configure config/jsdoc/configuration.json",
     "test": "ava",
     "test:coverage": "nyc yarn test"
   },

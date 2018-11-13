@@ -6,7 +6,7 @@
         ]
     },
     "opts": {
-        "destination": "jsdoc",
+        "destination": "docs",
         "readme": "README.md",
         "recurse": true,
         "template": "node_modules/docdash"

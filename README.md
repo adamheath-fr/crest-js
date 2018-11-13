@@ -12,7 +12,7 @@
 - [Project Structure](#project-structure)
 - [Development](#development)
   - [Building](#building)
-  - [JSDoc](#jsdoc)
+  - [Docs](#docs)
   - [Testing](#testing)
   - [Test Coverage](#test-coverage)
 - [Contributing](#contributing)
@@ -63,12 +63,10 @@ This allows you to easily build on top of the core functionality, for example, w
 ```sh
 build/ # Output of "yarn build".
 config/ # Tooling configuration files.
-documentation/ # Documentation files.
-jsdoc/ # Output of "yarn jsdoc".
+docs/ # API documentation And output of "yarn docs".
 src/ # Source code.
 ├── .babelrc # Babel configuration for source when executing "yarn test" or "yarn test:coverage".
 └── ...
-test/ # Test code.
 ```
 
 ## Development
@@ -81,12 +79,12 @@ Builds a production UMD version into `/build`.
 yarn build
 ```
 
-### JSDoc
+### Docs
 
-Generates JSDoc into `/jsdoc`.
+Generates API JSDoc into `/docs`.
 
 ```sh
-yarn jsdoc
+yarn docs
 ```
 
 ### Testing
