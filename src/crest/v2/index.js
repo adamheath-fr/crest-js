@@ -108,7 +108,7 @@ class v2 {
      * Updates a single resource by ID.
      * @param {string} id Resource ID.
      * @param {Object} body Resource representation.
-     * @param {string} revision Revision ID.
+     * @param {string} [revision] Revision ID.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6/dev-guide/#about-crest-update
      */
