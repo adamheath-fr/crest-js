@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>utils/uri/appendPathComponent.js - ForgeRock CREST.js</title>
+    <title>crest/v2_1/index.js - ForgeRock CREST.js</title>
     
     <meta name="description" content="A Lightweight Library to Communicate With ForgeRock CREST APIs." />
     
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">utils/uri/appendPathComponent.js</h1>
+    <h1 class="page-title">crest/v2_1/index.js</h1>
     
 
     
@@ -44,27 +44,32 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import URI from "urijs";
+            <pre class="prettyprint source linenums"><code>import v2 from "../v2";
 
 /**
- * Appends a path component to a URL.
- * @module utils/url/appendPathComponent
- * @param {string} url URL to append to.
- * @param {string} pathComponent Path component to append.
- * This must not be a hierarchical path (no "/") and will be URL encoded before being appended.
- * @returns {string} URL with path component appended.
+ * Representation of a CREST v2.1 resource.
+ * @extends v2
+ * @example
+ * import { CRESTv2_1 } from "@forgerock/crest-js";
+ *
+ * const resource = new CRESTv2_1("http://www.example.com");
  */
-const appendPathComponent = (url, pathComponent) => {
-    const newURI = new URI(url);
+class v2_1 extends v2 {
+    /**
+     * @override
+     */
+    get protocolVersion () {
+        return "2.1";
+    }
+    /**
+     * @override
+     */
+    createConstructInput (id) {
+        return id ? super.createConstructInput(id) : this.resourceURL;
+    }
+}
 
-    const encodedPathComponent = URI.encode(pathComponent);
-    const path = URI.joinPaths(newURI.path(), encodedPathComponent);
-    newURI.path(path);
-
-    return newURI.toString();
-};
-
-export default appendPathComponent;
+export default v2_1;
 </code></pre>
         </article>
     </section>

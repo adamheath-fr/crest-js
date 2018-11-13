@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>v2 - ForgeRock CREST.js</title>
+    <title>v2_1 - ForgeRock CREST.js</title>
     
     <meta name="description" content="A Lightweight Library to Communicate With ForgeRock CREST APIs." />
     
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">v2</h1>
+    <h1 class="page-title">v2_1</h1>
     
 
     
@@ -47,10 +47,10 @@
 <header>
     
         <h2>
-        v2
+        v2_1
         </h2>
         
-            <div class="class-description">Representation of a CREST v2 resource.</div>
+            <div class="class-description">Representation of a CREST v2.1 resource.</div>
         
     
 </header>
@@ -65,7 +65,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="v2"><span class="type-signature"></span>new v2<span class="signature">(resourceURL, resourceVersion<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="v2_1"><span class="type-signature"></span>new v2_1<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -77,7 +77,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="crest_v2_index.js.html">crest/v2/index.js</a>, <a href="crest_v2_index.js.html#line5">line 5</a>
+        <a href="crest_v2_1_index.js.html">crest/v2_1/index.js</a>, <a href="crest_v2_1_index.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -116,10 +116,6 @@
 
 
 
-<div class="description">
-    Creates a new instance.
-</div>
-
 
 
 
@@ -130,115 +126,11 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>import { CRESTv2 } from "forgerock-crest-js";
+    <pre class="prettyprint"><code>import { CRESTv2_1 } from "@forgerock/crest-js";
 
-const resource = new CRESTv2("http://www.example.com");</code></pre>
-
-
+const resource = new CRESTv2_1("http://www.example.com");</code></pre>
 
 
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>resourceURL</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last">URL of the resource.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>resourceVersion</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    <code>1.0</code>
-                
-                </td>
-            
-
-            <td class="description last">Resource version.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -258,6 +150,17 @@ const resource = new CRESTv2("http://www.example.com");</code></pre>
         
         </div>
     
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="v2.html">v2</a></li>
+    </ul>
+
 
     
 
@@ -295,6 +198,11 @@ const resource = new CRESTv2("http://www.example.com");</code></pre>
 
     
 
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="v2.html#protocolVersion">v2#protocolVersion</a>
+    </li></ul></dd>
     
 
     
@@ -366,6 +274,11 @@ const resource = new CRESTv2("http://www.example.com");</code></pre>
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="v2.html#action">v2#action</a>
+    </li></ul></dd>
     
 
     
@@ -572,6 +485,11 @@ const resource = new CRESTv2("http://www.example.com");</code></pre>
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="v2.html#create">v2#create</a>
+    </li></ul></dd>
+    
 
     
 
@@ -776,6 +694,11 @@ const resource = new CRESTv2("http://www.example.com");</code></pre>
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="v2.html#delete">v2#delete</a>
+    </li></ul></dd>
     
 
     
@@ -982,6 +905,11 @@ const resource = new CRESTv2("http://www.example.com");</code></pre>
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="v2.html#get">v2#get</a>
+    </li></ul></dd>
+    
 
     
 
@@ -1144,6 +1072,11 @@ const resource = new CRESTv2("http://www.example.com");</code></pre>
     
 
     
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="v2.html#queryFilter">v2#queryFilter</a>
+    </li></ul></dd>
+    
 
     
 
@@ -1256,6 +1189,11 @@ const resource = new CRESTv2("http://www.example.com");</code></pre>
 
     
 
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="v2.html#update">v2#update</a>
+    </li></ul></dd>
     
 
     

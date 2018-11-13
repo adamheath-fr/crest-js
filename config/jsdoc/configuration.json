@@ -9,7 +9,8 @@
         "meta": {
             "title": "ForgeRock CREST.js",
             "description": "A Lightweight Library to Communicate With ForgeRock CREST APIs."
-        }
+        },
+        "static": true
     },
     "opts": {
         "destination": "docs",

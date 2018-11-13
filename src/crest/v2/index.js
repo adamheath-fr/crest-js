@@ -20,6 +20,10 @@ class v2 {
         this.resourceVersion = resourceVersion;
         this.request = createRequest(this.protocolVersion, resourceVersion);
     }
+    /**
+     * CREST protocol version.
+     * @readonly
+     */
     get protocolVersion () {
         return "2.0";
     }
@@ -47,7 +51,7 @@ class v2 {
      * @see https://backstage.forgerock.com/docs/am/6/dev-guide/#about-crest-create
      */
     create (body, id) {
-        const input = id ? appendPathComponent(this.resourceURL, id) : `${this.resourceURL}?_action=create`;
+        const input = this.createConstructInput(id);
         const headers = { "Content-Type": "application/json" };
         if (id) { headers["If-None-Match"] = "*"; }
 
@@ -56,6 +60,16 @@ class v2 {
             headers,
             method: id ? "PUT" : "POST"
         });
+    }
+    /**
+     * Constructs the input when creating a resource.
+     * @param {string} [id] Client provided ID for the resource.
+     * @returns {string} The input.
+     * @see #create
+     * @private
+     */
+    createConstructInput (id) {
+        return id ? appendPathComponent(this.resourceURL, id) : `${this.resourceURL}?_action=create`;
     }
     /**
      * Deletes a single resource by ID.

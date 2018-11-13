@@ -23,6 +23,13 @@ export {
 
 export {
     /**
+     * @see v2_1
+     */
+    default as CRESTv2_1
+} from "./crest/v2_1";
+
+export {
+    /**
      * @see ParseError
      */
     default as ParseError
