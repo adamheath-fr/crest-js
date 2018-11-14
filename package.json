@@ -1,8 +1,13 @@
 {
   "name": "@forgerock/crest-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Phil Ostler <phil.ostler@forgerock.com>",
-  "license": "SEE LICENSE IN LICENSE.md",
+  "license": "MIT",
+  "homepage": "https://forgerock.github.io/crest-js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ForgeRock/crest-js.git"
+  },
   "main": "src/index.js",
   "scripts": {
     "build": "rollup --config config/rollup/configuration.js",
