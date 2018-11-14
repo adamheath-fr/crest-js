@@ -2,6 +2,13 @@
   <img width="120" src="logo.png">
   <h1>ForgeRock CREST.js</h1>
   A Lightweight Library to Communicate With ForgeRock CREST APIs.
+  <p>
+  <div>
+    <a href="https://www.npmjs.com/package/@forgerock/crest-js">
+      <img src="https://img.shields.io/npm/v/@forgerock/crest-js.svg?style=flat-square">
+    </a>
+    <img src="https://img.shields.io/david/forgerock/crest-js.svg?style=flat-square">
+  </div>
 </div>
 
 - [Prerequisites](#prerequisites)
