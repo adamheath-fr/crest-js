@@ -1,15 +1,35 @@
 import { eslint } from "rollup-plugin-eslint";
-import { uglify } from "rollup-plugin-uglify";
 import babel from "rollup-plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "rollup-plugin-node-resolve";
 
-import { name, version } from "../../package.json";
+import { browser, main, module, name } from "../../package.json";
 
-export default {
-    input: "src/index.js",
+const babelPlugin = babel({
+    babelrc: false,
+    exclude: "node_modules/**",
+    plugins: [
+        ["transform-builtin-extend", {
+            approximate: true,
+            globals: ["Error"]
+        }],
+        "@babel/plugin-proposal-object-rest-spread"
+    ],
+    presets: [
+        ["@babel/preset-env", {
+            "modules": false
+        }]
+    ]
+});
+const banner = "// Copyright (c) 2017-2018 ForgeRock AS. Licensed under the MIT license found in LICENSE.md.";
+const input = "src/index.js";
+
+export default [{
+    // UMD (for Browsers) Configuration.
+    input,
     output: {
-        file: `build/crest-js-${version}.js`,
+        banner,
+        file: browser,
         format: "umd",
         name,
         sourcemap: true
@@ -17,27 +37,28 @@ export default {
     plugins: [
         eslint(),
         resolve(),
-        babel({
-            babelrc: false,
-            exclude: "node_modules/**",
-            plugins: [
-                ["transform-builtin-extend", {
-                    approximate: true,
-                    globals: ["Error"]
-                }],
-                "@babel/plugin-proposal-object-rest-spread"
-            ],
-            presets: [
-                ["@babel/preset-env", {
-                    "modules": false
-                }]
-            ]
-        }),
-        /**
-         * rollup-plugin-commonjs must come after rollup-plugin-babel to support object spread.
-         * @see https://github.com/rollup/rollup/issues/1148#issuecomment-276010208
-         */
         commonjs(),
-        uglify()
+        babelPlugin
     ]
-};
+}, {
+    // CommonJS (for Node) and ES Modules (for Bundlers) Configuration.
+    external: ["urijs"],
+    input,
+    output: [{
+        banner,
+        file: main,
+        format: "cjs",
+        name,
+        sourcemap: true
+    }, {
+        banner,
+        file: module,
+        format: "es",
+        name,
+        sourcemap: true
+    }],
+    plugins: [
+        eslint(),
+        babelPlugin
+    ]
+}];

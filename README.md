@@ -99,20 +99,20 @@ See the [API Documentation][documentation] for all possible options.
 ### Project Structure
 
 ```sh
-build/ # Output of "yarn build".
+dist/ # Output of "yarn run build".
 config/ # Tooling configuration files.
-docs/ # API documentation And output of "yarn docs".
+docs/ # API documentation And output of "yarn run docs".
 src/ # Source code.
-├── .babelrc # Babel configuration for source when executing "yarn test" or "yarn test:coverage".
+├── .babelrc # Babel configuration for source when executing "yarn run test" or "yarn run test:coverage".
 └── ...
 ```
 
 ### Building
 
-Builds a production UMD version into `/build`.
+Builds production CommonJS, ES and UMD versions into `/dist`.
 
 ```sh
-yarn build
+yarn run build
 ```
 
 ### Docs
@@ -120,7 +120,7 @@ yarn build
 Generates API JSDoc into `/docs`.
 
 ```sh
-yarn docs
+yarn run docs
 ```
 
 ### Testing
@@ -128,17 +128,17 @@ yarn docs
 Runs tests against the source.
 
 ```sh
-yarn test
+yarn run test
 ```
 
-The `yarn` command will pass arguments to the underlying command. For examples, use `yarn test --verbose --watch` for continuous testing with extra output.
+The `yarn` command will pass arguments to the underlying command. For examples, use `yarn run test --verbose --watch` for continuous testing with extra output.
 
 ### Test Coverage
 
 Generates test coverage report.
 
 ```sh
-yarn test:coverage
+yarn run test:coverage
 ```
 
 ## Contributing
