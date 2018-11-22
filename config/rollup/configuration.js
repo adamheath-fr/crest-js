@@ -6,6 +6,7 @@ import resolve from "rollup-plugin-node-resolve";
 import { name } from "../../package.json";
 
 export default {
+    external: ["urijs"],
     input: "src/index.js",
     output: [{
         file: "dist/cjs/crest-js.js",
