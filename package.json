@@ -18,7 +18,9 @@
     "predocs": "rimraf docs",
     "docs": "jsdoc --configure config/jsdoc/configuration.json && cp logo.png docs",
     "test": "ava",
-    "test:coverage": "nyc yarn test"
+    "test:coverage": "nyc yarn test",
+    "prerelease": "yarn run test && yarn run docs && yarn run build",
+    "release": "yarn publish"
   },
   "dependencies": {
     "urijs": "1.19.1"
