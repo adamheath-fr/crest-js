@@ -9,8 +9,9 @@
     "type": "git",
     "url": "https://github.com/ForgeRock/crest-js.git"
   },
-  "main": "src/index.js",
+  "main": "dist/umd/crest-js.js",
   "scripts": {
+    "prebuild": "rimraf dist",
     "build": "rollup --config config/rollup/configuration.js",
     "predocs": "rimraf docs",
     "docs": "jsdoc --configure config/jsdoc/configuration.json && cp logo.png docs",

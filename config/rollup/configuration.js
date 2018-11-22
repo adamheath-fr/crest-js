@@ -3,16 +3,21 @@ import babel from "rollup-plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "rollup-plugin-node-resolve";
 
-import { name, version } from "../../package.json";
+import { name } from "../../package.json";
 
 export default {
     input: "src/index.js",
-    output: {
-        file: `build/crest-js-${version}.js`,
+    output: [{
+        file: "dist/cjs/crest-js.js",
+        format: "cjs",
+        name,
+        sourcemap: true
+    }, {
+        file: "dist/umd/crest-js.js",
         format: "umd",
         name,
         sourcemap: true
-    },
+    }],
     plugins: [
         eslint(),
         resolve(),

@@ -1,9 +1,9 @@
 /config
 /docs
+/src
 
 .eslintignore
 .eslintrc.js
 .yarnrc
-*.test.js
 logo.png
-src/.babelrc
+yarn-error.log
