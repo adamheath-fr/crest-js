@@ -1,5 +1,4 @@
 import { eslint } from "rollup-plugin-eslint";
-import { uglify } from "rollup-plugin-uglify";
 import babel from "rollup-plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "rollup-plugin-node-resolve";
@@ -37,7 +36,6 @@ export default {
          * rollup-plugin-commonjs must come after rollup-plugin-babel to support object spread.
          * @see https://github.com/rollup/rollup/issues/1148#issuecomment-276010208
          */
-        commonjs(),
-        uglify()
+        commonjs()
     ]
 };
