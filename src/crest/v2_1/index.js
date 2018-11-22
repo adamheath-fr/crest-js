@@ -1,4 +1,4 @@
-import v2 from "../v2";
+import v2 from "../v2/index";
 
 /**
  * Representation of a CREST v2.1 resource.

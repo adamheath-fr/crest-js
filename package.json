@@ -9,7 +9,9 @@
     "type": "git",
     "url": "https://github.com/ForgeRock/crest-js.git"
   },
-  "main": "dist/umd/crest-js.js",
+  "main": "dist/crest-js.cjs.js",
+  "module": "dist/crest-js.esm.js",
+  "browser": "dist/crest-js.umd.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup --config config/rollup/configuration.js",

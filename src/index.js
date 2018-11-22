@@ -19,14 +19,14 @@ export {
      * @see v2
      */
     default as CRESTv2
-} from "./crest/v2";
+} from "./crest/v2/index";
 
 export {
     /**
      * @see v2_1
      */
     default as CRESTv2_1
-} from "./crest/v2_1";
+} from "./crest/v2_1/index";
 
 export {
     /**
