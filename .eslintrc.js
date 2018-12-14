@@ -4,9 +4,9 @@ module.exports = {
         es6: true
     },
     extends: [
-        "forgerock",
-        "forgerock/filenames",
-        "forgerock/promise"
+        "@forgerock",
+        "@forgerock/eslint-config/filenames",
+        "@forgerock/eslint-config/promise"
     ],
     parserOptions: {
         ecmaVersion: 2018,
