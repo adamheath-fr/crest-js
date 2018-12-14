@@ -1,7 +1,7 @@
 <div align="center">
   <img width="120" src="logo.png">
   <h1>ForgeRock CREST.js</h1>
-  A Lightweight Library to Communicate With ForgeRock CREST APIs.
+  Lightweight Library for Communicating With ForgeRock CREST APIs.
   <p>
   <div>
     <a href="https://www.npmjs.com/package/@forgerock/crest-js">
