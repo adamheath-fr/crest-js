@@ -88,9 +88,11 @@ resource.action("action");
 resource.create(body, "id");
 resource.delete("id");
 resource.get("id");
-resource.queryFilter();
+resource.queryFilter(); // Only supports `_queryFilter=true`
 resource.update("id", body);
 ```
+
+Pagination is currently unsupported.
 
 See the [API Documentation][documentation] for all possible options.
 
