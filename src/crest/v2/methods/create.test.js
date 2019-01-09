@@ -26,7 +26,7 @@ test("returns a Promise", (t) => t.true(new Index(url).create() instanceof Promi
 
 test("invokes \"fetch\" with the header \"Content-Type\" set to \"application/json\"", (t) => {
     new Index(url).create();
-    t.is(fetchSpy.getCall(0).args[1].headers.get("Content-Type"), "application/json");
+    t.is(fetchSpy.lastCall.args[1].headers.get("Content-Type"), "application/json");
 });
 
 test("invokes \"fetch\" with the \"body\" set to a stringified Object", (t) => {

@@ -31,12 +31,12 @@ test("invokes \"fetch\" with the \"method\" set to \"POST\"", (t) => {
 
 test("invokes \"fetch\" with \"_action\" query parameter appended to input", (t) => {
     new Index(url).action("action");
-    t.true(fetchSpy.calledWith(`${url}?_action=action`));
+    t.is(fetchSpy.lastCall.args[0], `${url}?_action=action`);
 });
 
 test("invokes \"fetch\" with the header \"Content-Type\" not set", (t) => {
     new Index(url).action("action");
-    t.false(fetchSpy.getCall(0).args[1].headers.has("Content-Type"));
+    t.false(fetchSpy.lastCall.args[1].headers.has("Content-Type"));
 });
 
 test("invokes \"fetch\" with the \"body\" set to undefined", (t) => {

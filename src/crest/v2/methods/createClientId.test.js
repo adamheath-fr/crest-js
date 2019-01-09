@@ -34,5 +34,5 @@ test("invokes \"fetch\" with the \"method\" set to \"PUT\"", (t) => {
 
 test("invokes \"fetch\" with the header \"If-None-Match\" set to \"*\"", (t) => {
     new Index(url).create(body, id);
-    t.is(fetchSpy.getCall(0).args[1].headers.get("If-None-Match"), "*");
+    t.is(fetchSpy.lastCall.args[1].headers.get("If-None-Match"), "*");
 });
