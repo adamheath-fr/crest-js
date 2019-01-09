@@ -643,10 +643,10 @@
   dependencies:
     arrify "^1.0.1"
 
-"@forgerock/eslint-config@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@forgerock/eslint-config/-/eslint-config-1.0.0.tgz#64fd3da1255cd554d0988bb06603484ccbf4b693"
-  integrity sha512-1PiUMCOLmBDISiS/zJBdWvz4bh5YwIQNcOo3hWZClE5Xd/e5qA7gpCAJivvouQAXBM9isaCfaoHFMTdQK/xwaA==
+"@forgerock/eslint-config@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@forgerock/eslint-config/-/eslint-config-1.1.0.tgz#cbd6566d358160728ebb7d772b4f1bb347dd5a3c"
+  integrity sha512-xwigVn82sc2Mbe9jaRXGL/5SZXS1POHWgbMY6Ba4SUp9o+Sv2LFG5Xxo/IKJ0lS2hXUs0mug6gxd/FXOy3zyrg==
 
 "@ladjs/time-require@^0.1.4":
   version "0.1.4"
@@ -1712,6 +1712,11 @@ commander@~2.17.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha512-wPMUt6FnH2yzG95SA6mzjQOEKUU3aLaDEmzs1ti+1E9h+CsrZghRlqEM/EJ4KscsQVG8uNN4uVreUeT8+drlgg==
 
+comment-parser@^0.5.1:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-0.5.4.tgz#089840b9cccacad2b769b231ed43081d501b9487"
+  integrity sha512-0h7W6Y1Kb6zKQMJqdX41C5qf9ITCVIsD2qP2RaqDF3GFkXFrmuAuv5zUOuo19YzyC9scjBNpqzuaRQ2Sy5pxMQ==
+
 common-path-prefix@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/common-path-prefix/-/common-path-prefix-1.0.0.tgz#cd52f6f0712e0baab97d6f9732874f22f47752c0"
@@ -2042,6 +2047,15 @@ eslint-plugin-filenames@1.3.2:
     lodash.kebabcase "4.1.1"
     lodash.snakecase "4.1.1"
     lodash.upperfirst "4.3.1"
+
+eslint-plugin-jsdoc@3.15.1:
+  version "3.15.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-3.15.1.tgz#b4f2bc12d04c3719c296e2b354147a1c9fe93644"
+  integrity sha512-xIQ+ajO6M6zsu5XEn5+1QyE1/P1w/l3yAXPCToZjRcrsKsg5yLTsYnrkdoJZJegE70dTZZwQ5bYPCjEbPey6cw==
+  dependencies:
+    comment-parser "^0.5.1"
+    jsdoctypeparser "^2.0.0-alpha-8"
+    lodash "^4.17.11"
 
 eslint-plugin-promise@4.0.1:
   version "4.0.1"
@@ -3205,6 +3219,11 @@ jsdoc@3.5.5:
     strip-json-comments "~2.0.1"
     taffydb "2.6.2"
     underscore "~1.8.3"
+
+jsdoctypeparser@^2.0.0-alpha-8:
+  version "2.0.0-alpha-8"
+  resolved "https://registry.yarnpkg.com/jsdoctypeparser/-/jsdoctypeparser-2.0.0-alpha-8.tgz#baf137fb8e2a558810adcf19d2d2a2f680e90a5f"
+  integrity sha1-uvE3+44qVYgQrc8Z0tKi9oDpCl8=
 
 jsesc@^1.3.0:
   version "1.3.0"
