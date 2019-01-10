@@ -21,6 +21,6 @@ test.after(() => {
 });
 
 test("invokes \"fetch\" with the header \"If-Match\" set to revision", (t) => {
-    new Index(url).delete(id, revision);
+    new Index(url).delete(id, { revision });
     t.is(fetchSpy.lastCall.args[1].headers.get("If-Match"), revision);
 });

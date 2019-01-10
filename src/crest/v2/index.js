@@ -1,6 +1,7 @@
 import appendPathComponent from "../../utils/uri/appendPathComponent";
 import createBody from "./createBody";
 import createRequest from "../createRequest";
+import appendQueryString from "../../utils/uri/appendQueryString";
 
 /**
  * Representation of a CREST v2 resource.
@@ -30,14 +31,20 @@ class v2 {
     /**
      * Invokes an action on a resource provider.
      * @param {string} action Action name.
-     * @param {Object} [body] Action body.
+     * @param {Object} [options={}] Options.
+     * @param {Object} [options.body] Action body.
+     * @param {Object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-action
      */
-    action (action, body) {
+    action (action, { body, queryString } = {}) {
+        const input = appendQueryString(this.resourceURL, {
+            ...queryString,
+            _action: action
+        });
         const headers = body ? { "Content-Type": "application/json" } : {};
 
-        return this.request(`${this.resourceURL}?_action=${action}`, {
+        return this.request(input, {
             body: body ? createBody(body) : undefined,
             headers,
             method: "POST"
@@ -46,12 +53,14 @@ class v2 {
     /**
      * Creates a resource.
      * @param {Object} body Resource representation.
-     * @param {string} [id] Client provided ID for the resource.
+     * @param {Object} [options={}] Options.
+     * @param {string} [options.id] Client provided ID for the resource.
+     * @param {Object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-create
      */
-    create (body, id) {
-        const input = this.createConstructInput(id);
+    create (body, { id, queryString } = {}) {
+        const input = this.constructCreateInput(id, queryString);
         const headers = { "Content-Type": "application/json" };
         if (id) { headers["If-None-Match"] = "*"; }
 
@@ -64,25 +73,31 @@ class v2 {
     /**
      * Constructs the input when creating a resource.
      * @param {string} [id] Client provided ID for the resource.
+     * @param {Object} [queryString] Additional query string.
      * @returns {string} The input.
      * @see #create
      * @private
      */
-    createConstructInput (id) {
-        return id ? appendPathComponent(this.resourceURL, id) : `${this.resourceURL}?_action=create`;
+    constructCreateInput (id, queryString) {
+        return id
+            ? appendQueryString(appendPathComponent(this.resourceURL, id), queryString)
+            : appendQueryString(this.resourceURL, { ...queryString, _action: "create" });
     }
     /**
      * Deletes a single resource by ID.
      * @param {string} id Resource ID.
-     * @param {string} [revision] Revision ID.
+     * @param {Object} [options={}] Options.
+     * @param {string} [options.revision] Revision ID.
+     * @param {Object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-delete
      */
-    delete (id, revision) {
+    delete (id, { queryString, revision } = {}) {
+        const input = appendQueryString(appendPathComponent(this.resourceURL, id), queryString);
         const headers = {};
         if (revision) { headers["If-Match"] = revision; }
 
-        return this.request(appendPathComponent(this.resourceURL, id), {
+        return this.request(input, {
             headers,
             method: "DELETE"
         });
@@ -90,33 +105,49 @@ class v2 {
     /**
      * Retrieves a single resource by ID.
      * @param {string} id Resource ID.
+     * @param {Object} [options={}] Options.
+     * @param {Object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-read
      */
-    get (id) {
-        return this.request(appendPathComponent(this.resourceURL, id));
+    get (id, { queryString } = {}) {
+        const input = appendQueryString(appendPathComponent(this.resourceURL, id), queryString);
+        return this.request(input, {
+            method: "GET"
+        });
     }
     /**
      * Queries a resource collection.
+     * @param {Object} [options={}] Options.
+     * @param {Object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-query
      */
-    queryFilter () {
-        return this.request(`${this.resourceURL}?_queryFilter=true`);
+    queryFilter ({ queryString } = {}) {
+        const input = appendQueryString(this.resourceURL, {
+            ...queryString,
+            _queryFilter: true
+        });
+        return this.request(input, {
+            method: "GET"
+        });
     }
     /**
      * Updates a single resource by ID.
      * @param {string} id Resource ID.
      * @param {Object} body Resource representation.
-     * @param {string} [revision] Revision ID.
+     * @param {Object} [options={}] Options.
+     * @param {string} [options.revision] Revision ID.
+     * @param {Object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-update
      */
-    update (id, body, revision) {
+    update (id, body, { queryString, revision } = {}) {
+        const input = appendQueryString(appendPathComponent(this.resourceURL, id), queryString);
         const headers = { "Content-Type": "application/json" };
         if (revision) { headers["If-Match"] = revision; }
 
-        return this.request(appendPathComponent(this.resourceURL, id), {
+        return this.request(input, {
             body: createBody(body),
             headers,
             method: "PUT"

@@ -29,9 +29,36 @@ test("invokes \"fetch\" with the \"method\" set to \"POST\"", (t) => {
     }));
 });
 
-test("invokes \"fetch\" with \"_action\" query parameter appended to input", (t) => {
+test("invokes \"fetch\" with \"_action\" query string appended to input", (t) => {
     new Index(url).action("action");
-    t.is(fetchSpy.lastCall.args[0], `${url}?_action=action`);
+    t.is(fetchSpy.lastCall.args[0], `${url}/?_action=action`);
+});
+
+test("invokes \"fetch\" with \"_action\" query string from parameter and not additional query strings", (t) => {
+    new Index(url).action("action1", {
+        queryString: {
+            _action: "action2"
+        }
+    });
+    t.is(fetchSpy.lastCall.args[0], `${url}/?_action=action1`);
+});
+
+test("invokes \"fetch\" with additional query strings appended to input", (t) => {
+    new Index(url).action("action", {
+        queryString: {
+            query: "value"
+        }
+    });
+    t.is(fetchSpy.lastCall.args[0], `${url}/?query=value&_action=action`);
+});
+
+test("invokes \"fetch\" with additional query strings encoded in input", (t) => {
+    new Index(url).action("action", {
+        queryString: {
+            "%/^ä #*!": "%/^ä #*!"
+        }
+    });
+    t.is(fetchSpy.lastCall.args[0], `${url}/?%25%2F%5E%C3%A4+%23%2A%21=%25%2F%5E%C3%A4+%23%2A%21&_action=action`);
 });
 
 test("invokes \"fetch\" with the header \"Content-Type\" not set", (t) => {

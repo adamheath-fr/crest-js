@@ -21,5 +21,23 @@ test.after(() => {
 
 test("invokes \"fetch\" with input", (t) => {
     new Index(url).create(body);
-    t.true(fetchSpy.calledWith(url));
+    t.is(fetchSpy.lastCall.args[0], `${url}/`);
+});
+
+test("invokes \"fetch\" with additional query strings appended to input", (t) => {
+    new Index(url).create(body, {
+        queryString: {
+            query: "value"
+        }
+    });
+    t.is(fetchSpy.lastCall.args[0], `${url}/?query=value`);
+});
+
+test("invokes \"fetch\" with additional query strings encoded in input", (t) => {
+    new Index(url).create(body, {
+        queryString: {
+            "%/^ä #*!": "%/^ä #*!"
+        }
+    });
+    t.is(fetchSpy.lastCall.args[0], `${url}/?%25%2F%5E%C3%A4+%23%2A%21=%25%2F%5E%C3%A4+%23%2A%21`);
 });

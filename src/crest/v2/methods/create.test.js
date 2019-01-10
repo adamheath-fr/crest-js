@@ -7,7 +7,6 @@ import Index from "../index";
 
 const body = { attribute: "value" };
 const fetchSpy = sinon.spy(fetchMock, "fetchHandler");
-const id = faker.lorem.word();
 const url = faker.internet.url();
 
 test.before(() => fetchMock.mock("*", { response: true }));
@@ -30,6 +29,6 @@ test("invokes \"fetch\" with the header \"Content-Type\" set to \"application/js
 });
 
 test("invokes \"fetch\" with the \"body\" set to a stringified Object", (t) => {
-    new Index(url).create(body, id);
+    new Index(url).create(body);
     t.true(fetchSpy.calledWithMatch(url, { body: JSON.stringify(body) }));
 });
