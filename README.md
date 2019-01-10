@@ -153,7 +153,7 @@ Contribute to ForgeRock CREST.js by opening a Pull Request.
 - [Specification of the CREST HTTP protocol][forgerock-commons-protocol]
 
 [documentation]: https://forgerock.github.io/crest-js
-[docs-dev-guide-about-crest]: https://backstage.forgerock.com/docs/am/6/dev-guide/#sec-about-crest
+[docs-dev-guide-about-crest]: https://backstage.forgerock.com/docs/am/6.5/dev-guide/#sec-about-crest
 [forgerock-commons-protocol]: https://stash.forgerock.org/projects/COMMONS/repos/forgerock-commons/browse/rest/Protocol.md
 [mdn-fetch]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 [mdn-promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise

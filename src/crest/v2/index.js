@@ -32,7 +32,7 @@ class v2 {
      * @param {string} action Action name.
      * @param {Object} [body] Action body.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
-     * @see https://backstage.forgerock.com/docs/am/6/dev-guide/#about-crest-action
+     * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-action
      */
     action (action, body) {
         const headers = body ? { "Content-Type": "application/json" } : {};
@@ -48,7 +48,7 @@ class v2 {
      * @param {Object} body Resource representation.
      * @param {string} [id] Client provided ID for the resource.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
-     * @see https://backstage.forgerock.com/docs/am/6/dev-guide/#about-crest-create
+     * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-create
      */
     create (body, id) {
         const input = this.createConstructInput(id);
@@ -76,7 +76,7 @@ class v2 {
      * @param {string} id Resource ID.
      * @param {string} [revision] Revision ID.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
-     * @see https://backstage.forgerock.com/docs/am/6/dev-guide/#about-crest-delete
+     * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-delete
      */
     delete (id, revision) {
         const headers = {};
@@ -91,7 +91,7 @@ class v2 {
      * Retrieves a single resource by ID.
      * @param {string} id Resource ID.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
-     * @see https://backstage.forgerock.com/docs/am/6/dev-guide/#about-crest-read
+     * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-read
      */
     get (id) {
         return this.request(appendPathComponent(this.resourceURL, id));
@@ -99,7 +99,7 @@ class v2 {
     /**
      * Queries a resource collection.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
-     * @see https://backstage.forgerock.com/docs/am/6/dev-guide/#about-crest-query
+     * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-query
      */
     queryFilter () {
         return this.request(`${this.resourceURL}?_queryFilter=true`);
@@ -110,7 +110,7 @@ class v2 {
      * @param {Object} body Resource representation.
      * @param {string} [revision] Revision ID.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
-     * @see https://backstage.forgerock.com/docs/am/6/dev-guide/#about-crest-update
+     * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-update
      */
     update (id, body, revision) {
         const headers = { "Content-Type": "application/json" };
