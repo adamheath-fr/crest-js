@@ -19,6 +19,8 @@
 - [Usage](#usage)
   - [Basic](#basic)
   - [Supported Methods](#supported-methods)
+  - [Options](#options)
+    - [`queryString`](#querystring)
 - [Development](#development)
   - [Project Structure](#project-structure)
   - [Building](#building)
@@ -60,12 +62,12 @@ import { CRESTv2 } from "@forgerock/crest-js";
 const resource = new CRESTv2("http://www.domain.com/crest/api");
 
 resource.get("id").then(json => {
-  // Success!
-}).catch(error => {
+  // Success! `json` is an Object
+}, error => {
   if (error instanceof CRESTError) {
-    // CREST error.
+    // CREST error
   } else if (error instanceof RequestError) {
-    // Request could not be completed e.g. network failure.
+    // Request could not be completed e.g. network failure
   } else if (error instanceof ParseError) {
     // Response couldn't be parsed as JSON
   }
@@ -74,7 +76,7 @@ resource.get("id").then(json => {
 
 All the functions upon a CREST resource return Promises.
 
-This allows you to easily build on top of the core functionality, for example, with common handlers that deal with rejections consistently.
+Promises allow for easily building on top of the core functionality, for example, with common handlers that deal with rejections consistently.
 
 ### Supported Methods
 
@@ -84,17 +86,64 @@ import { CRESTv2_1 } from "@forgerock/crest-js";
 const resource = new CRESTv2_1("http://www.domain.com/crest/api");
 const body = { data: "value" };
 
+// #action
 resource.action("action");
-resource.create(body, "id");
+resource.action("action", { body }); // Action with body
+
+// #create
+resource.create(body); // Server provided ID
+resource.create(body, { id: "id" }); // Client provided ID
+
+// #delete
 resource.delete("id");
+
+// #get
 resource.get("id");
+
+// #queryFilter
 resource.queryFilter(); // Only supports `_queryFilter=true`
+
+// #update
 resource.update("id", body);
 ```
 
 Pagination is currently unsupported.
 
 See the [API Documentation][documentation] for all possible options.
+
+### Options
+
+#### `queryString`
+
+For adding additional query strings to the any request.
+
+```js
+import { CRESTv2 } from "@forgerock/crest-js";
+
+const resource = new CRESTv2("http://www.domain.com/crest/api");
+
+resource.get("id", {
+  queryString: {
+      query: "value"
+  }
+})
+// => http://www.domain.com/crest/api/id?query=value
+```
+
+Query strings applied by ForgeRock CREST.js cannot be overridden.
+
+```js
+import { CRESTv2 } from "@forgerock/crest-js";
+
+const resource = new CRESTv2("http://www.domain.com/crest/api");
+
+resource.action("action1", {
+  queryString: {
+      _action: "action2"
+  }
+})
+// => http://www.domain.com/crest/api?_action=action1
+```
 
 ## Development
 
@@ -153,7 +202,7 @@ Contribute to ForgeRock CREST.js by opening a Pull Request.
 - [Specification of the CREST HTTP protocol][forgerock-commons-protocol]
 
 [documentation]: https://forgerock.github.io/crest-js
-[docs-dev-guide-about-crest]: https://backstage.forgerock.com/docs/am/6/dev-guide/#sec-about-crest
+[docs-dev-guide-about-crest]: https://backstage.forgerock.com/docs/am/6.5/dev-guide/#sec-about-crest
 [forgerock-commons-protocol]: https://stash.forgerock.org/projects/COMMONS/repos/forgerock-commons/browse/rest/Protocol.md
 [mdn-fetch]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 [mdn-promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise

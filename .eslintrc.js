@@ -6,6 +6,7 @@ module.exports = {
     extends: [
         "@forgerock",
         "@forgerock/eslint-config/filenames",
+        "@forgerock/eslint-config/jsdoc",
         "@forgerock/eslint-config/promise"
     ],
     parserOptions: {

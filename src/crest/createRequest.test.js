@@ -46,27 +46,27 @@ test("returned function invokes \"invokeFetch\" with argument options", (t) => {
 test("returned function invokes \"invokeFetch\" with the header \"Accept-API-Version\" set to the correct " +
     "\"protocolVersion\" and \"resource\"", (t) => {
     createRequest(protocolVersion, resourceVersion)(url, options);
-    t.is(invokeFetchSpy.getCall(0).args[1].headers["Accept-API-Version"],
+    t.is(invokeFetchSpy.lastCall.args[1].headers["Accept-API-Version"],
         `protocol=${protocolVersion},resource=${resourceVersion}`);
 });
 
 test("returned function invokes \"invokeFetch\" with the header \"Accept-API-Version\" that cannot be " +
     "overridden", (t) => {
     createRequest(protocolVersion, resourceVersion)(url, { headers: { "Accept-API-Version": true } });
-    t.is(invokeFetchSpy.getCall(0).args[1].headers["Accept-API-Version"],
+    t.is(invokeFetchSpy.lastCall.args[1].headers["Accept-API-Version"],
         `protocol=${protocolVersion},resource=${resourceVersion}`);
 });
 
 test("returned function invokes \"parseResponse\" with the return value of \"invokeFetch\"", (t) => {
     createRequest(protocolVersion, resourceVersion)(url);
-    t.true(parseResponseSpy.calledWith(invokeFetchSpy.getCall(0).returnValue));
+    t.true(parseResponseSpy.calledWith(invokeFetchSpy.lastCall.returnValue));
 });
 
 test("returned function invokes \"throwFailedResponse\" with the return values of \"invokeFetch\" and " +
     "\"parseResponse\"", (t) => {
     createRequest(protocolVersion, resourceVersion)(url);
     t.true(throwFailedResponseSpy.calledWith(
-        invokeFetchSpy.getCall(0).returnValue,
-        parseResponseSpy.getCall(0).returnValue
+        invokeFetchSpy.lastCall.returnValue,
+        parseResponseSpy.lastCall.returnValue
     ));
 });

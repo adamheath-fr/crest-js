@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>crest/fetch/createHeaders - ForgeRock CREST.js</title>
+    <title>utils/url/appendQueryString - ForgeRock CREST.js</title>
     
     <meta name="description" content="Lightweight Library for Communicating With ForgeRock CREST APIs." />
     
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">crest/fetch/createHeaders</h1>
+    <h1 class="page-title">utils/url/appendQueryString</h1>
     
 
     
@@ -57,7 +57,7 @@
         <div class="container-overview">
         
             
-                <div class="description">Creates a new instance of Headers.</div>
+                <div class="description">Appends a query string to a URL.</div>
             
 
             
@@ -71,7 +71,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="crest_fetch_createHeaders.js.html">crest/fetch/createHeaders.js</a>, <a href="crest_fetch_createHeaders.js.html#line1">line 1</a>
+        <a href="utils_uri_appendQueryString.js.html">utils/uri/appendQueryString.js</a>, <a href="utils_uri_appendQueryString.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -145,7 +145,30 @@
 
         <tr>
             
-                <td class="name"><code>headers</code></td>
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">URL to append to.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>queryString</code></td>
             
 
             <td class="type">
@@ -161,7 +184,7 @@
 
             
 
-            <td class="description last">An object containing any HTTP headers that you want to pre-populate your Headers object with.</td>
+            <td class="description last">Additional query string.</td>
         </tr>
 
     
@@ -185,7 +208,7 @@
 
         
 <div class="param-desc">
-    A new instance of Headers.
+    URL with query string appended.
 </div>
 
 
@@ -196,7 +219,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Headers</span>
+<span class="param-type">string</span>
 
 
     </dd>
