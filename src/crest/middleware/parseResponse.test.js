@@ -22,7 +22,7 @@ test("resolves with JSON", (t) => {
 
 test("throws \"ParseError\" when \"response.json\" throws", async (t) => {
     const response = Promise.resolve(new Response());
-    await t.throws(parseResponse(response), ParseError);
+    await t.throwsAsync(parseResponse(response), ParseError);
 });
 
 test("throws \"ParseError\" with message which \"response.json\" throws", async (t) => {
@@ -30,6 +30,6 @@ test("throws \"ParseError\" with message which \"response.json\" throws", async 
     const response = Promise.resolve({
         json: () => Promise.reject(message)
     });
-    const error = await t.throws(parseResponse(response), ParseError);
+    const error = await t.throwsAsync(parseResponse(response), ParseError);
     t.is(error.message, message);
 });

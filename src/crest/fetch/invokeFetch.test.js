@@ -60,13 +60,13 @@ test("invokes \"createHeaders\" with argument options.headers", (t) => {
 test("throws \"RequestError\" when \"fetch\" throws", async (t) => {
     const failureUrl = faker.internet.url();
     fetchMock.mock(failureUrl, { "throws": true });
-    await t.throws(invokeFetch(failureUrl), RequestError);
+    await t.throwsAsync(invokeFetch(failureUrl), RequestError);
 });
 
 test("throws \"RequestError\" with message which \"fetch\" throws", async (t) => {
     const failureUrl = faker.internet.url();
     const message = faker.lorem.sentence();
     fetchMock.mock(failureUrl, { "throws": message });
-    const error = await t.throws(invokeFetch(failureUrl), RequestError);
+    const error = await t.throwsAsync(invokeFetch(failureUrl), RequestError);
     t.is(error.message, message);
 });
