@@ -1,6 +1,6 @@
 {
   "name": "@forgerock/crest-js",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "author": "Phil Ostler <phil.ostler@forgerock.com>",
   "description": "Lightweight Library for Communicating With ForgeRock CREST APIs.",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "test": "ava",
     "test:coverage": "nyc yarn test",
     "prerelease": "yarn run test && yarn run docs && yarn run build",
-    "release": "yarn publish"
+    "release": "npm publish"
   },
   "dependencies": {
     "urijs": "1.19.1"
