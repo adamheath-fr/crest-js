@@ -1,12 +1,14 @@
 module.exports = {
     env: {
         browser: true,
-        es6: true
+        es6: true,
+        node: true
     },
     extends: [
-        "forgerock",
-        "forgerock/filenames",
-        "forgerock/promise"
+        "@forgerock",
+        "@forgerock/eslint-config/filenames",
+        "@forgerock/eslint-config/jsdoc",
+        "@forgerock/eslint-config/promise"
     ],
     parserOptions: {
         ecmaVersion: 2018,

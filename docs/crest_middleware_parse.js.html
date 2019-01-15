@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>ParseError - ForgeRock CREST.js</title>
+    <title>crest/middleware/parse.js - ForgeRock CREST.js</title>
     
     <meta name="description" content="Lightweight Library for Communicating With ForgeRock CREST APIs." />
     
@@ -34,190 +34,39 @@
 
 <div id="main">
     
-    <h1 class="page-title">ParseError</h1>
+    <h1 class="page-title">crest/middleware/parse.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-        ParseError
-        </h2>
-        
-            <div class="class-description">Representation of a parse error.
-<p>Thrown when a response body failed to parse as JSON.</p></div>
-        
-    
-</header>
-
-<article>
-    
-        <div class="container-overview">
-        
-            
-
-    
-    <h2>Constructor</h2>
-    
-
-    <h4 class="name" id="ParseError"><span class="type-signature"></span>new ParseError<span class="signature">(message)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="crest_errors_ParseError.js.html">crest/errors/ParseError.js</a>, <a href="crest_errors_ParseError.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Creates a new instance.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Human-readable description of the error.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        </div>
-    
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import ParseError from "../errors/ParseError";
+
+/**
+ * Parses a Response as JSON.
+ * @module crest/middleware/parse
+ * @param {Promise.&lt;Response>} promise Promise from previous middleware.
+ * @returns {Promise} Promise to pass to next middleware.
+ * @throws {ParseError} Thrown when parsing was unable to complete.
+ */
+const parse = (promise) => {
+    return promise.then((response) => {
+        /* eslint-disable promise/no-nesting */
+        return response.json().catch((error) => {
+            throw new ParseError(error);
+        });
+        /* eslint-enable */
+    });
+};
+
+export default parse;
+</code></pre>
+        </article>
+    </section>
 
 
 

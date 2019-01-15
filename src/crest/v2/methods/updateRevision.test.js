@@ -22,6 +22,6 @@ test.after(() => {
 
 test("invokes \"fetch\" with the header \"If-Match\" set to revision", (t) => {
     const body = { attribute: "value" };
-    new Index(url).update(id, body, revision);
-    t.is(fetchSpy.getCall(0).args[1].headers.get("If-Match"), revision);
+    new Index(url).update(id, body, { revision });
+    t.is(fetchSpy.lastCall.args[1].headers.get("If-Match"), revision);
 });

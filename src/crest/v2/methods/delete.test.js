@@ -34,3 +34,21 @@ test("invokes \"fetch\" with id appended to input", (t) => {
     new Index(url).delete(id);
     t.true(fetchSpy.calledWith(`${url}/${id}`));
 });
+
+test("invokes \"fetch\" with additional query strings appended to input", (t) => {
+    new Index(url).delete(id, {
+        queryString: {
+            query: "value"
+        }
+    });
+    t.is(fetchSpy.lastCall.args[0], `${url}/${id}?query=value`);
+});
+
+test("invokes \"fetch\" with additional query strings encoded in input", (t) => {
+    new Index(url).delete(id, {
+        queryString: {
+            "%/^ä #*!": "%/^ä #*!"
+        }
+    });
+    t.is(fetchSpy.lastCall.args[0], `${url}/${id}?%25%2F%5E%C3%A4+%23%2A%21=%25%2F%5E%C3%A4+%23%2A%21`);
+});

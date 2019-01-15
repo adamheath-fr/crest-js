@@ -1,6 +1,13 @@
 import invokeFetch from "./fetch/invokeFetch";
-import parseResponse from "./middleware/parseResponse";
-import throwFailedResponse from "./middleware/throwFailedResponse";
+import parse from "./middleware/parse";
+import throwOnUnsuccessful from "./middleware/throwOnUnsuccessful";
+
+/**
+ * Middleware to apply to a CREST resource.
+ * @callback middleware
+ * @param {Promise} promise Promise from previous middleware.
+ * @returns {Promise} Promise to pass to next middleware.
+ */
 
 /**
  * Creates a function that initiates a CREST request.
@@ -8,12 +15,13 @@ import throwFailedResponse from "./middleware/throwFailedResponse";
  * @module crest/createRequest
  * @param {string} protocolVersion CREST protocol version.
  * @param {string} resourceVersion Resource version.
+ * @param {middleware[]} middleware Middleware.
  * @returns {function} Function that initiates a CREST request.
  * The returned function's signature parameters exactly match that of
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch|fetch()}.
  */
-const createRequest = (protocolVersion, resourceVersion) => (input, { headers, ...options } = {}) => {
-    const response = invokeFetch(input, {
+const createRequest = (protocolVersion, resourceVersion, middleware) => (input, { headers, ...options } = {}) => {
+    const promise = invokeFetch(input, {
         ...options,
         headers: {
             ...headers,
@@ -21,8 +29,11 @@ const createRequest = (protocolVersion, resourceVersion) => (input, { headers, .
         }
     });
 
-    const json = parseResponse(response);
-    return throwFailedResponse(response, json);
+    return [
+        throwOnUnsuccessful,
+        parse,
+        ...middleware
+    ].reduce((previousPromise, func) => func(previousPromise), promise);
 };
 
 export default createRequest;

@@ -8,7 +8,7 @@
     "docdash": {
         "meta": {
             "title": "ForgeRock CREST.js",
-            "description": "A Lightweight Library to Communicate With ForgeRock CREST APIs."
+            "description": "Lightweight Library for Communicating With ForgeRock CREST APIs."
         },
         "static": true
     },

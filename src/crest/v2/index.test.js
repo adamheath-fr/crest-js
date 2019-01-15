@@ -19,7 +19,7 @@ test("constructor argument \"resourceVersion\" defaults to \"1.0\"", (t) => {
 
 test("constructor argument \"resourceVersion\" overrides default", (t) => {
     const resourceVersion = "10.0";
-    t.is(new Index(url, resourceVersion).resourceVersion, resourceVersion);
+    t.is(new Index(url, { resourceVersion }).resourceVersion, resourceVersion);
 });
 
 test("constructor invokes \"createRequest\" with a protocol value of \"2.0\"", (t) => {

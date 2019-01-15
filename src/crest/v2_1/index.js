@@ -1,3 +1,4 @@
+import appendQueryString from "../../utils/uri/appendQueryString";
 import v2 from "../v2/index";
 
 /**
@@ -18,8 +19,8 @@ class v2_1 extends v2 {
     /**
      * @override
      */
-    createConstructInput (id) {
-        return id ? super.createConstructInput(id) : this.resourceURL;
+    constructCreateInput (id, queryString) {
+        return id ? super.constructCreateInput(id, queryString) : appendQueryString(this.resourceURL, queryString);
     }
 }
 

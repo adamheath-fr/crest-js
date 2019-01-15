@@ -59,24 +59,14 @@ test("invokes \"createHeaders\" with argument options.headers", (t) => {
 
 test("throws \"RequestError\" when \"fetch\" throws", async (t) => {
     const failureUrl = faker.internet.url();
-    /**
-     * Use the following when issue fetch-mock#295 is closed.
-     * @example fetchMock.mock(failureUrl, { "throws": true });
-     * @see https://github.com/wheresrhys/fetch-mock/issues/295
-     */
-    fetchMock.mock(failureUrl, Promise.reject());
-    await t.throws(invokeFetch(failureUrl), RequestError);
+    fetchMock.mock(failureUrl, { "throws": true });
+    await t.throwsAsync(invokeFetch(failureUrl), RequestError);
 });
 
 test("throws \"RequestError\" with message which \"fetch\" throws", async (t) => {
     const failureUrl = faker.internet.url();
     const message = faker.lorem.sentence();
-    /**
-     * Use the following when issue fetch-mock#295 is closed.
-     * @example fetchMock.mock(failureUrl, { "throws": message });
-     * @see https://github.com/wheresrhys/fetch-mock/issues/295
-     */
-    fetchMock.mock(failureUrl, Promise.reject(message));
-    const error = await t.throws(invokeFetch(failureUrl), RequestError);
+    fetchMock.mock(failureUrl, { "throws": message });
+    const error = await t.throwsAsync(invokeFetch(failureUrl), RequestError);
     t.is(error.message, message);
 });

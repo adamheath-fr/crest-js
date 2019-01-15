@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>ParseError - ForgeRock CREST.js</title>
+    <title>Global - ForgeRock CREST.js</title>
     
     <meta name="description" content="Lightweight Library for Communicating With ForgeRock CREST APIs." />
     
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">ParseError</h1>
+    <h1 class="page-title">Global</h1>
     
 
     
@@ -47,11 +47,8 @@
 <header>
     
         <h2>
-        ParseError
-        </h2>
         
-            <div class="class-description">Representation of a parse error.
-<p>Thrown when a response body failed to parse as JSON.</p></div>
+        </h2>
         
     
 </header>
@@ -62,11 +59,74 @@
         
             
 
-    
-    <h2>Constructor</h2>
+<dl class="details">
+
     
 
-    <h4 class="name" id="ParseError"><span class="type-signature"></span>new ParseError<span class="signature">(message)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+
+    
+
+    <h4 class="name" id="middleware"><span class="type-signature"></span>middleware<span class="signature">(promise)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
 
     
 
@@ -78,7 +138,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="crest_errors_ParseError.js.html">crest/errors/ParseError.js</a>, <a href="crest_errors_ParseError.js.html#line1">line 1</a>
+        <a href="crest_createRequest.js.html">crest/createRequest.js</a>, <a href="crest_createRequest.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -118,7 +178,7 @@
 
 
 <div class="description">
-    Creates a new instance.
+    Middleware to apply to a CREST resource.
 </div>
 
 
@@ -156,13 +216,13 @@
 
         <tr>
             
-                <td class="name"><code>message</code></td>
+                <td class="name"><code>promise</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Promise</span>
 
 
             
@@ -172,7 +232,7 @@
 
             
 
-            <td class="description last">Human-readable description of the error.</td>
+            <td class="description last">Promise from previous middleware.</td>
         </tr>
 
     
@@ -192,26 +252,31 @@
 
 
 
-
+<h5>Returns:</h5>
 
         
-        </div>
-    
+<div class="param-desc">
+    Promise to pass to next middleware.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
 
     
 
-    
 
-    
-
-     
-
-    
-
-    
-
-    
-
+            
     
 
     
