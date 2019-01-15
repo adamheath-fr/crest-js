@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>crest/fetch/invokeFetch - ForgeRock CREST.js</title>
+    <title>crest/middleware/throwOnUnsuccessful - ForgeRock CREST.js</title>
     
     <meta name="description" content="Lightweight Library for Communicating With ForgeRock CREST APIs." />
     
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">crest/fetch/invokeFetch</h1>
+    <h1 class="page-title">crest/middleware/throwOnUnsuccessful</h1>
     
 
     
@@ -57,7 +57,7 @@
         <div class="container-overview">
         
             
-                <div class="description">Invokes <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch">fetch()</a>, applying standard behaviour.</div>
+                <div class="description">Throws an error when given an unsuccessful response.</div>
             
 
             
@@ -71,7 +71,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="crest_fetch_invokeFetch.js.html">crest/fetch/invokeFetch.js</a>, <a href="crest_fetch_invokeFetch.js.html#line4">line 4</a>
+        <a href="crest_middleware_throwOnUnsuccessful.js.html">crest/middleware/throwOnUnsuccessful.js</a>, <a href="crest_middleware_throwOnUnsuccessful.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -133,8 +133,6 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
         
 
@@ -147,64 +145,23 @@
 
         <tr>
             
-                <td class="name"><code>input</code></td>
+                <td class="name"><code>promise</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">*</span>
+<span class="param-type">Promise.&lt;Response></span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last">See <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters">fetch() Parameters</a>.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>init</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">See <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters">fetch() Parameters</a>.</td>
+            <td class="description last">Promise from previous middleware.</td>
         </tr>
 
     
@@ -229,8 +186,7 @@
 <dl>
     <dt>
         <div class="param-desc">
-        Thrown when a request was unable to complete.
-See <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Exceptions">fetch() Exceptions</a>.
+        Thrown when the response status was not in the 2xx range.
         </div>
     </dt>
     <dd></dd>
@@ -241,7 +197,7 @@ See <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlob
             </dt>
             <dd>
                 
-<span class="param-type"><a href="RequestError.html">RequestError</a></span>
+<span class="param-type"><a href="CRESTError.html">CRESTError</a></span>
 
 
             </dd>
@@ -258,7 +214,7 @@ See <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlob
 
         
 <div class="param-desc">
-    See <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Return_value">fetch() Return value</a>.
+    Promise to pass to next middleware.
 </div>
 
 

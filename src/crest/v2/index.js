@@ -14,12 +14,14 @@ class v2 {
     /**
      * Creates a new instance.
      * @param {string} resourceURL URL of the resource.
-     * @param {string} [resourceVersion=1.0] Resource version.
+     * @param {Object} [options={}] Options.
+     * @param {middleware[]} [options.middleware=[]] Middleware.
+     * @param {string} [options.resourceVersion=1.0] Resource version.
      */
-    constructor (resourceURL, resourceVersion = "1.0") {
+    constructor (resourceURL, { middleware = [], resourceVersion = "1.0" } = {}) {
         this.resourceURL = resourceURL;
         this.resourceVersion = resourceVersion;
-        this.request = createRequest(this.protocolVersion, resourceVersion);
+        this.request = createRequest(this.protocolVersion, resourceVersion, middleware);
     }
     /**
      * CREST protocol version.
