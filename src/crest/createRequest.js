@@ -1,4 +1,5 @@
 import invokeFetch from "./fetch/invokeFetch";
+import newPromise from "./middleware/newPromise";
 import parse from "./middleware/parse";
 import throwOnUnsuccessful from "./middleware/throwOnUnsuccessful";
 
@@ -32,6 +33,7 @@ const createRequest = (protocolVersion, resourceVersion, middleware) => (input, 
     return [
         throwOnUnsuccessful,
         parse,
+        newPromise,
         ...middleware
     ].reduce((previousPromise, func) => func(previousPromise), promise);
 };

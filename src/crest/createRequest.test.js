@@ -4,11 +4,13 @@ import sinon from "sinon";
 import test from "ava";
 
 import * as invokeFetch from "./fetch/invokeFetch";
+import * as newPromise from "./middleware/newPromise";
 import * as parse from "./middleware/parse";
 import * as throwOnUnsuccessful from "./middleware/throwOnUnsuccessful";
 import createRequest from "./createRequest";
 
 const invokeFetchSpy = sinon.spy(invokeFetch, "default");
+const newPromiseSpy = sinon.spy(newPromise, "default");
 const options = { option: true };
 const parseSpy = sinon.spy(parse, "default");
 const protocolVersion = "2.0";
@@ -64,12 +66,13 @@ test("returned function invokes \"invokeFetch\" with the header \"Accept-API-Ver
 test("returned function invokes static middleware in the expected order", (t) => {
     createRequest(protocolVersion, resourceVersion, [])(url);
     t.true(throwOnUnsuccessfulSpy.calledImmediatelyBefore(parseSpy));
+    t.true(parseSpy.calledImmediatelyBefore(newPromiseSpy));
 });
 
 test("returned function invokes \"middleware\" after static middleware", (t) => {
     const middleware = sinon.stub();
     createRequest(protocolVersion, resourceVersion, [middleware])(url);
-    t.true(middleware.calledImmediatelyAfter(parseSpy));
+    t.true(middleware.calledImmediatelyAfter(newPromiseSpy));
 });
 
 test("returned function invokes \"middleware\" in the expected order", (t) => {
