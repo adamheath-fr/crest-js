@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>crest/middleware/throwOnUnsuccessful.js - ForgeRock CREST.js</title>
+    <title>crest/middleware/newPromise.js - ForgeRock CREST.js</title>
     
     <meta name="description" content="Lightweight Library for Communicating With ForgeRock CREST APIs." />
     
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">crest/middleware/throwOnUnsuccessful.js</h1>
+    <h1 class="page-title">crest/middleware/newPromise.js</h1>
     
 
     
@@ -44,36 +44,25 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import CRESTError from "../errors/CRESTError";
-
-/**
- * Throws an error when given an unsuccessful response.
- * @module crest/middleware/throwOnUnsuccessful
+            <pre class="prettyprint source linenums"><code>/**
+ * Returns a new (polyfilled) Promise.
+ *
+ * fetch().json() returns a non-Promise thenable, which cannot be polyfilled
+ * (e.g. with #finally). This middleware ensures that the resulting Promise is
+ * a (potentially) polyfilled Promise by returning a new Promise.
+ * @see https://github.com/zloirock/core-js/issues/178
+ * @see https://github.com/zloirock/core-js/issues/332
+ * @see https://github.com/zloirock/core-js/issues/371
+ * @module crest/middleware/newPromise
  * @param {Promise.&lt;Response>} promise Promise from previous middleware.
  * @returns {Promise} Promise to pass to next middleware.
- * @throws {CRESTError} Thrown when the response status was not in the 2xx range.
+ * @throws {ParseError} Thrown when parsing was unable to complete.
  */
-const throwOnUnsuccessful = (promise) => {
-    return promise.then((response) => {
-        if (!response.ok) {
-            let errorMessage;
-            let errorStatusMessage = response.statusText;
-
-            /* eslint-disable promise/always-return, promise/catch-or-return, promise/no-nesting */
-            return response.json().then(({ message, reason }) => {
-                errorMessage = message;
-                if (reason) { errorStatusMessage = reason; }
-            }).finally(() => {
-                throw new CRESTError(response.url, response.status, errorStatusMessage, errorMessage);
-            });
-            /* eslint-enable */
-        }
-
-        return response;
-    });
+const newPromise = (promise) => {
+    return Promise.resolve(promise);
 };
 
-export default throwOnUnsuccessful;
+export default newPromise;
 </code></pre>
         </article>
     </section>
