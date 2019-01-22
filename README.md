@@ -21,6 +21,7 @@
   - [Supported Methods](#supported-methods)
   - [Options](#options)
     - [`queryString`](#querystring)
+  - [Middleware](#middleware)
 - [Development](#development)
   - [Project Structure](#project-structure)
   - [Building](#building)
@@ -37,6 +38,10 @@ ForgeRock CREST.js requires the [`fetch`][mdn-fetch] and [`Promise`][mdn-promise
 ## Supported Versions
 
 ForgeRock CREST.js supports CREST versions 2.0 and 2.1.
+
+```js
+import { CRESTv2, CRESTv2_1 } from "@forgerock/crest-js";
+```
 
 ## Installation
 
@@ -107,7 +112,7 @@ resource.queryFilter(); // Only supports `_queryFilter=true`
 resource.update("id", body);
 ```
 
-Pagination is currently unsupported.
+Pagination is currently only supported via the additional query strings option `queryString`.
 
 See the [API Documentation][documentation] for all possible options.
 
@@ -143,6 +148,38 @@ resource.action("action1", {
   }
 })
 // => http://www.domain.com/crest/api?_action=action1
+```
+
+### Middleware
+
+One or many middleware can be applied to an CREST resource.
+
+Each middleware is a function that takes a single Promise parameter, and returns a Promise to pass to the next middleware.
+
+The first middleware in the chain is guaranteed to receive a Promise which is either resolved to a parsed JSON payload, or rejected with one of the defined error types.
+
+```js
+import { CRESTv2_1 } from "@forgerock/crest-js";
+
+const customMiddleware = (promise) => {
+  return promise.then((json) => {
+    // Success! `json` is an Object
+    const jsonToReturn = {
+      ...json,
+      myAttribute: true
+    };
+
+    // Return value will be passed the next middleware
+    return json;
+  }, (error) => {
+    // Capture, rethrow or modify errors
+    throw new CustomError(error.message);
+  });
+};
+
+const resource = new CRESTv2_1("http://www.domain.com/crest/api", {
+  middleware: [customMiddleware]
+});
 ```
 
 ## Development

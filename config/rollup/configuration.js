@@ -21,7 +21,7 @@ const babelPlugin = babel({
         }]
     ]
 });
-const banner = "// Copyright (c) 2017-2018 ForgeRock AS. Licensed under the MIT license found in LICENSE.md.";
+const banner = "// Copyright (c) 2017-2019 ForgeRock AS. Licensed under the MIT license found in LICENSE.md.";
 const input = "src/index.js";
 
 export default [{
