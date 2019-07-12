@@ -16,6 +16,7 @@
     <![endif]-->
     <link type="text/css" rel="stylesheet" href="styles/prettify.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -42,6 +43,11 @@
     
 
 
+    <section class="package">
+        <h3> </h3>		
+    </section>
+
+
 
 
 
@@ -50,6 +56,7 @@
 
 
     
+
 
 
     <section class="readme">
@@ -65,26 +72,29 @@
     <img src="https://img.shields.io/david/forgerock/crest-js.svg?style=flat-square">
   </div>
 </div>
-
 <ul>
 <li><a href="#prerequisites">Prerequisites</a></li>
 <li><a href="#supported-versions">Supported Versions</a></li>
-<li><a href="#installation">Installation</a><ul>
+<li><a href="#installation">Installation</a>
+<ul>
 <li><a href="#via-yarn">via Yarn</a></li>
 <li><a href="#via-npm">via NPM</a></li>
 </ul>
 </li>
-<li><a href="#usage">Usage</a><ul>
+<li><a href="#usage">Usage</a>
+<ul>
 <li><a href="#basic">Basic</a></li>
 <li><a href="#supported-methods">Supported Methods</a></li>
-<li><a href="#options">Options</a><ul>
+<li><a href="#options">Options</a>
+<ul>
 <li><a href="#querystring"><code>queryString</code></a></li>
 </ul>
 </li>
 <li><a href="#middleware">Middleware</a></li>
 </ul>
 </li>
-<li><a href="#development">Development</a><ul>
+<li><a href="#development">Development</a>
+<ul>
 <li><a href="#project-structure">Project Structure</a></li>
 <li><a href="#building">Building</a></li>
 <li><a href="#docs">Docs</a></li>
@@ -95,9 +105,22 @@
 <li><a href="#contributing">Contributing</a></li>
 <li><a href="#further-reading">Further Reading</a></li>
 </ul>
-<h2>Prerequisites</h2><p>ForgeRock CREST.js requires the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"><code>fetch</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> APIs to be available in the global environment.</p>
-<h2>Supported Versions</h2><p>ForgeRock CREST.js supports CREST versions 2.0 and 2.1.</p>
-<pre class="prettyprint source lang-js"><code>import { CRESTv2, CRESTv2_1 } from &quot;@forgerock/crest-js&quot;;</code></pre><h2>Installation</h2><h3>via Yarn</h3><pre class="prettyprint source lang-sh"><code>yarn add @forgerock/crest-js</code></pre><h3>via NPM</h3><pre class="prettyprint source lang-sh"><code>npm install @forgerock/crest-js</code></pre><h2>Usage</h2><h3>Basic</h3><pre class="prettyprint source lang-js"><code>import { CRESTv2 } from &quot;@forgerock/crest-js&quot;;
+<h2>Prerequisites</h2>
+<p>ForgeRock CREST.js requires the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"><code>fetch</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"><code>Promise</code></a> APIs to be available in the global environment.</p>
+<h2>Supported Versions</h2>
+<p>ForgeRock CREST.js supports CREST versions 2.0 and 2.1.</p>
+<pre class="prettyprint source lang-js"><code>import { CRESTv2, CRESTv2_1 } from &quot;@forgerock/crest-js&quot;;
+</code></pre>
+<h2>Installation</h2>
+<h3>via Yarn</h3>
+<pre class="prettyprint source lang-sh"><code>yarn add @forgerock/crest-js
+</code></pre>
+<h3>via NPM</h3>
+<pre class="prettyprint source lang-sh"><code>npm install @forgerock/crest-js
+</code></pre>
+<h2>Usage</h2>
+<h3>Basic</h3>
+<pre class="prettyprint source lang-js"><code>import { CRESTv2 } from &quot;@forgerock/crest-js&quot;;
 
 const resource = new CRESTv2(&quot;http://www.domain.com/crest/api&quot;);
 
@@ -111,9 +134,12 @@ resource.get(&quot;id&quot;).then(json => {
   } else if (error instanceof ParseError) {
     // Response couldn't be parsed as JSON
   }
-});</code></pre><p>All the functions upon a CREST resource return Promises.</p>
+});
+</code></pre>
+<p>All the functions upon a CREST resource return Promises.</p>
 <p>Promises allow for easily building on top of the core functionality, for example, with common handlers that deal with rejections consistently.</p>
-<h3>Supported Methods</h3><pre class="prettyprint source lang-js"><code>import { CRESTv2_1 } from &quot;@forgerock/crest-js&quot;;
+<h3>Supported Methods</h3>
+<pre class="prettyprint source lang-js"><code>import { CRESTv2_1 } from &quot;@forgerock/crest-js&quot;;
 
 const resource = new CRESTv2_1(&quot;http://www.domain.com/crest/api&quot;);
 const body = { data: &quot;value&quot; };
@@ -136,9 +162,13 @@ resource.get(&quot;id&quot;);
 resource.queryFilter(); // Only supports `_queryFilter=true`
 
 // #update
-resource.update(&quot;id&quot;, body);</code></pre><p>Pagination is currently only supported via the additional query strings option <code>queryString</code>.</p>
+resource.update(&quot;id&quot;, body);
+</code></pre>
+<p>Pagination is currently only supported via the additional query strings option <code>queryString</code>.</p>
 <p>See the <a href="https://forgerock.github.io/crest-js">API Documentation</a> for all possible options.</p>
-<h3>Options</h3><h4><code>queryString</code></h4><p>For adding additional query strings to the any request.</p>
+<h3>Options</h3>
+<h4><code>queryString</code></h4>
+<p>For adding additional query strings to the any request.</p>
 <pre class="prettyprint source lang-js"><code>import { CRESTv2 } from &quot;@forgerock/crest-js&quot;;
 
 const resource = new CRESTv2(&quot;http://www.domain.com/crest/api&quot;);
@@ -148,7 +178,9 @@ resource.get(&quot;id&quot;, {
       query: &quot;value&quot;
   }
 })
-// => http://www.domain.com/crest/api/id?query=value</code></pre><p>Query strings applied by ForgeRock CREST.js cannot be overridden.</p>
+// => http://www.domain.com/crest/api/id?query=value
+</code></pre>
+<p>Query strings applied by ForgeRock CREST.js cannot be overridden.</p>
 <pre class="prettyprint source lang-js"><code>import { CRESTv2 } from &quot;@forgerock/crest-js&quot;;
 
 const resource = new CRESTv2(&quot;http://www.domain.com/crest/api&quot;);
@@ -158,7 +190,10 @@ resource.action(&quot;action1&quot;, {
       _action: &quot;action2&quot;
   }
 })
-// => http://www.domain.com/crest/api?_action=action1</code></pre><h3>Middleware</h3><p>One or many middleware can be applied to an CREST resource.</p>
+// => http://www.domain.com/crest/api?_action=action1
+</code></pre>
+<h3>Middleware</h3>
+<p>One or many middleware can be applied to an CREST resource.</p>
 <p>Each middleware is a function that takes a single Promise parameter, and returns a Promise to pass to the next middleware.</p>
 <p>The first middleware in the chain is guaranteed to receive a Promise which is either resolved to a parsed JSON payload, or rejected with one of the defined error types.</p>
 <pre class="prettyprint source lang-js"><code>import { CRESTv2_1 } from &quot;@forgerock/crest-js&quot;;
@@ -181,18 +216,38 @@ const customMiddleware = (promise) => {
 
 const resource = new CRESTv2_1(&quot;http://www.domain.com/crest/api&quot;, {
   middleware: [customMiddleware]
-});</code></pre><h2>Development</h2><h3>Project Structure</h3><pre class="prettyprint source lang-sh"><code>dist/ # Output of &quot;yarn run build&quot;.
+});
+</code></pre>
+<h2>Development</h2>
+<h3>Project Structure</h3>
+<pre class="prettyprint source lang-sh"><code>dist/ # Output of &quot;yarn run build&quot;.
 config/ # Tooling configuration files.
 docs/ # API documentation And output of &quot;yarn run docs&quot;.
 src/ # Source code.
 ├── .babelrc # Babel configuration for source when executing &quot;yarn run test&quot; or &quot;yarn run test:coverage&quot;.
-└── ...</code></pre><h3>Building</h3><p>Builds production CommonJS, ES and UMD versions into <code>/dist</code>.</p>
-<pre class="prettyprint source lang-sh"><code>yarn run build</code></pre><h3>Docs</h3><p>Generates API JSDoc into <code>/docs</code>.</p>
-<pre class="prettyprint source lang-sh"><code>yarn run docs</code></pre><h3>Testing</h3><p>Runs tests against the source.</p>
-<pre class="prettyprint source lang-sh"><code>yarn run test</code></pre><p>The <code>yarn</code> command will pass arguments to the underlying command. For examples, use <code>yarn run test --verbose --watch</code> for continuous testing with extra output.</p>
-<h3>Test Coverage</h3><p>Generates test coverage report.</p>
-<pre class="prettyprint source lang-sh"><code>yarn run test:coverage</code></pre><h2>Contributing</h2><p>Contribute to ForgeRock CREST.js by opening a Pull Request.</p>
-<h2>Further Reading</h2><ul>
+└── ...
+</code></pre>
+<h3>Building</h3>
+<p>Builds production CommonJS, ES and UMD versions into <code>/dist</code>.</p>
+<pre class="prettyprint source lang-sh"><code>yarn run build
+</code></pre>
+<h3>Docs</h3>
+<p>Generates API JSDoc into <code>/docs</code>.</p>
+<pre class="prettyprint source lang-sh"><code>yarn run docs
+</code></pre>
+<h3>Testing</h3>
+<p>Runs tests against the source.</p>
+<pre class="prettyprint source lang-sh"><code>yarn run test
+</code></pre>
+<p>The <code>yarn</code> command will pass arguments to the underlying command. For examples, use <code>yarn run test --verbose --watch</code> for continuous testing with extra output.</p>
+<h3>Test Coverage</h3>
+<p>Generates test coverage report.</p>
+<pre class="prettyprint source lang-sh"><code>yarn run test:coverage
+</code></pre>
+<h2>Contributing</h2>
+<p>Contribute to ForgeRock CREST.js by opening a Pull Request.</p>
+<h2>Further Reading</h2>
+<ul>
 <li><a href="https://backstage.forgerock.com/docs/am/6.5/dev-guide/#sec-about-crest">About ForgeRock Common REST</a></li>
 <li><a href="https://stash.forgerock.org/projects/COMMONS/repos/forgerock-commons/browse/rest/Protocol.md">Specification of the CREST HTTP protocol</a></li>
 </ul></article>
@@ -210,11 +265,13 @@ src/ # Source code.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Feb 12 2019 17:40:44 GMT+0000 (Greenwich Mean Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a> on Fri Jul 12 2019 11:18:41 GMT+0100 (British Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
 <script src="scripts/linenumber.js"></script>
+
 
 
 </body>
