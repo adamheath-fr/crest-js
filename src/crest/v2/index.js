@@ -14,7 +14,7 @@ class v2 {
     /**
      * Creates a new instance.
      * @param {string} resourceURL URL of the resource.
-     * @param {Object} [options={}] Options.
+     * @param {object} [options={}] Options.
      * @param {middleware[]} [options.middleware=[]] Middleware.
      * @param {string} [options.resourceVersion=1.0] Resource version.
      */
@@ -33,9 +33,9 @@ class v2 {
     /**
      * Invokes an action on a resource provider.
      * @param {string} action Action name.
-     * @param {Object} [options={}] Options.
-     * @param {Object} [options.body] Action body.
-     * @param {Object} [options.queryString] Additional query string.
+     * @param {object} [options={}] Options.
+     * @param {object} [options.body] Action body.
+     * @param {object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-action
      */
@@ -54,10 +54,10 @@ class v2 {
     }
     /**
      * Creates a resource.
-     * @param {Object} body Resource representation.
-     * @param {Object} [options={}] Options.
+     * @param {object} body Resource representation.
+     * @param {object} [options={}] Options.
      * @param {string} [options.id] Client provided ID for the resource.
-     * @param {Object} [options.queryString] Additional query string.
+     * @param {object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-create
      */
@@ -75,7 +75,7 @@ class v2 {
     /**
      * Constructs the input when creating a resource.
      * @param {string} [id] Client provided ID for the resource.
-     * @param {Object} [queryString] Additional query string.
+     * @param {object} [queryString] Additional query string.
      * @returns {string} The input.
      * @see #create
      * @private
@@ -88,9 +88,9 @@ class v2 {
     /**
      * Deletes a single resource by ID.
      * @param {string} id Resource ID.
-     * @param {Object} [options={}] Options.
+     * @param {object} [options={}] Options.
      * @param {string} [options.revision] Revision ID.
-     * @param {Object} [options.queryString] Additional query string.
+     * @param {object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-delete
      */
@@ -107,8 +107,8 @@ class v2 {
     /**
      * Retrieves a single resource by ID.
      * @param {string} id Resource ID.
-     * @param {Object} [options={}] Options.
-     * @param {Object} [options.queryString] Additional query string.
+     * @param {object} [options={}] Options.
+     * @param {object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-read
      */
@@ -120,8 +120,8 @@ class v2 {
     }
     /**
      * Queries a resource collection.
-     * @param {Object} [options={}] Options.
-     * @param {Object} [options.queryString] Additional query string.
+     * @param {object} [options={}] Options.
+     * @param {object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-query
      */
@@ -137,10 +137,10 @@ class v2 {
     /**
      * Updates a single resource by ID.
      * @param {string} id Resource ID.
-     * @param {Object} body Resource representation.
-     * @param {Object} [options={}] Options.
+     * @param {object} body Resource representation.
+     * @param {object} [options={}] Options.
      * @param {string} [options.revision] Revision ID.
-     * @param {Object} [options.queryString] Additional query string.
+     * @param {object} [options.queryString] Additional query string.
      * @returns {Promise<Response>} A Promise that resolves to a Response object.
      * @see https://backstage.forgerock.com/docs/am/6.5/dev-guide/#about-crest-update
      */

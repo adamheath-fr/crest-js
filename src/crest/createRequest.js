@@ -17,7 +17,7 @@ import throwOnUnsuccessful from "./middleware/throwOnUnsuccessful";
  * @param {string} protocolVersion CREST protocol version.
  * @param {string} resourceVersion Resource version.
  * @param {middleware[]} middleware Middleware.
- * @returns {function} Function that initiates a CREST request.
+ * @returns {Function} Function that initiates a CREST request.
  * The returned function's signature parameters exactly match that of
  * {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch|fetch()}.
  */
