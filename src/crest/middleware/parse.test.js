@@ -33,7 +33,7 @@ test("rejects with same reason", (t) => {
 test("throws \"ParseError\" when \"response.json\" throws", async (t) => {
     const response = new Response();
     const promise = Promise.resolve(response);
-    await t.throwsAsync(parse(promise), ParseError);
+    await t.throwsAsync(parse(promise), { instanceOf: ParseError });
 });
 
 test("throws \"ParseError\" with message which \"response.json\" throws", async (t) => {
@@ -41,6 +41,6 @@ test("throws \"ParseError\" with message which \"response.json\" throws", async 
     const promise = Promise.resolve({
         json: () => Promise.reject(message)
     });
-    const error = await t.throwsAsync(parse(promise), ParseError);
+    const error = await t.throwsAsync(parse(promise), { instanceOf: ParseError });
     t.is(error.message, message);
 });

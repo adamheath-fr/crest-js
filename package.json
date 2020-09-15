@@ -26,12 +26,13 @@
     "urijs": "1.19.1"
   },
   "devDependencies": {
+    "@ava/babel": "1.0.1",
     "@babel/core": "7.6.2",
     "@babel/plugin-proposal-object-rest-spread": "7.6.2",
     "@babel/preset-env": "7.6.2",
     "@babel/register": "7.6.2",
     "@forgerock/eslint-config": "1.1.1",
-    "ava": "2.4.0",
+    "ava": "3.12.1",
     "babel-plugin-transform-builtin-extend": "1.1.2",
     "docdash": "1.1.1",
     "eslint": "6.5.1",
@@ -53,8 +54,10 @@
     "sinon": "7.5.0"
   },
   "ava": {
+    "babel": {
+      "compileAsTests": ["src/**/*"]
+    },
     "require": [
-      "./config/ava/register",
       "./config/ava/fetchPolyfill"
     ]
   }
