@@ -1,6 +1,6 @@
 {
   "name": "@forgerock/crest-js",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "author": "Phil Ostler <phil.ostler@forgerock.com>",
   "description": "Lightweight Library for Communicating With ForgeRock CREST APIs.",
   "license": "MIT",
