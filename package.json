@@ -23,7 +23,7 @@
     "release": "npm publish"
   },
   "dependencies": {
-    "urijs": "1.19.1"
+    "urijs": "1.19.4"
   },
   "devDependencies": {
     "@ava/babel": "1.0.1",
